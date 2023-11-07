@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/screenshot_2023_10_26_at_16_12_40" />
+
+    <TextView
+        android:id="@+id/text_view_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Back"
+        android:textSize="40sp"
+        android:layout_marginTop="220dp"
+        android:textColor="#0B0A0A"
+        android:fontFamily="sans-serif-medium"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/text_view_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_title"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="60dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="20sp"
+        android:textColor="#0B0A0A"
+        android:text="Username"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_username"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_username"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+
+        >
+
+        <EditText
+            android:id="@+id/edit_text_username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Enter your username" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/text_view_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_view_username"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="60dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="20sp"
+        android:textColor="#0B0A0A"
+        android:text="Password"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_password"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp">
+
+        <EditText
+            android:id="@+id/edit_text_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Enter your password" />
+    </androidx.cardview.widget.CardView>
+
+
+    <Button
+        android:id="@+id/button_log_in"
+        android:layout_below="@id/card_view_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="225dp"
+        android:text="  Log  In " />
+
+    <Button
+        android:id="@+id/button_sign_up"
+        android:layout_below="@id/card_view_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="95dp"
+        android:text="Sign Up " />
+
+    <TextView
+        android:id="@+id/text_view_forgot_password"
+        android:padding="6dp"
+        android:fontFamily="sans-serif-black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot your password? "
+        android:layout_below="@+id/button_log_in"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"/>
+
+
+
+
+</RelativeLayout>
