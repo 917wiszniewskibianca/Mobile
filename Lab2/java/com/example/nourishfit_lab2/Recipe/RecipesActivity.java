@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -63,10 +65,11 @@ public class RecipesActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-               recipeViewModel.delete(recipeAdapter.getRecipeAt(viewHolder.getAdapterPosition()));
+                showDeleteConfirmationDialog(viewHolder.getAdapterPosition());
                Toast.makeText(RecipesActivity.this, "Recipe deleted", Toast.LENGTH_LONG).show();
             }
         }).attachToRecyclerView(recyclerView);
+
 
 
         recipeAdapter.setOnItemClickListener(new RecipeAdapter.OnItemClickListener() {
@@ -85,6 +88,34 @@ public class RecipesActivity extends AppCompatActivity {
         });
 
     }
+
+    void showDeleteConfirmationDialog(final int pos) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(RecipesActivity.this);
+        builder.setMessage("Are you sure you want to delete this recipe?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked Yes button
+                        deleteRecipe(pos);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked No button
+                        dialog.dismiss(); // Close the dialog
+                        Toast.makeText(RecipesActivity.this, "Recipe not deleted", Toast.LENGTH_LONG).show();
+                        recipeAdapter.notifyItemChanged(pos);
+                    }
+                });
+
+        builder.create().show();
+    }
+
+
+    private void deleteRecipe(int pos) {
+        recipeViewModel.delete(recipeAdapter.getRecipeAt(pos));
+        Toast.makeText(RecipesActivity.this, "Recipe deleted", Toast.LENGTH_LONG).show();
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
